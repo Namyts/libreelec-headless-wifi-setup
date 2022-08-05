@@ -1,1 +1,1 @@
-touch script_has_been_reached.warm && sh ../libreelec_wifi_setup.sh | tee ../wifi_start_log && rm ./autostart.sh && reboot
+touch /storage/script_has_been_reached.warm && sh /storage/libreelec_wifi_setup.sh | tee /storage/wifi_start_log && rm /storage/autostart.sh && reboot

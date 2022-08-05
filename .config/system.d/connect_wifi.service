@@ -3,7 +3,7 @@ Description=Connects to the wifi in the config
 
 [Service]
 Type=oneshot
-ExecStart=../autostart.sh
+ExecStart=/storage/autostart.sh
 RemainAfterExit=no
 
 [Install]

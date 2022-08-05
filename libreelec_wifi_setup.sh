@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SSID=`cat wifi_ssid.txt`
-PASSWORD=`cat wifi_password.txt`
+SSID=`cat /storage/wifi_ssid.txt`
+PASSWORD=`cat /storage/wifi_password.txt`
 
 echo "$SSID"
 echo "$PASSWORD"
