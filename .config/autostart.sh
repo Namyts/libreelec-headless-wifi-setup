@@ -1,1 +1,1 @@
-sh ../libreelec_wifi_setup.sh | tee ../wifi_start_log && rm ./autostart.sh && reboot
+touch script_has_been_reached.warm && sh ../libreelec_wifi_setup.sh | tee ../wifi_start_log && rm ./autostart.sh && reboot
