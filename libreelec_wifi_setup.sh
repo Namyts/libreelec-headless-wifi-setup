@@ -31,7 +31,7 @@ echo "Checking if wifi is already connected"
 # else
 	echo "Connecting to new wifi..."
 	CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
-	REAL_SSID=`echo $CONNECTION | | awk '{print $2}'`
+	REAL_SSID=`echo "$CONNECTION" | awk '{print $2}'`
 
 	echo "$CONNECTION"
 	echo "$REAL_SSID"
