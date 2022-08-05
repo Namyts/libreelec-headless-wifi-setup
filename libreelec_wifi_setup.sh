@@ -24,6 +24,8 @@ echo "$HAS_WIFI_ALREADY"
 
 echo "Checking if wifi is already connected"
 
+connmanctl agent on
+
 # if [ -n "$HAS_WIFI_ALREADY" ]; then
 # 	echo "Already connected to Wifi. Deleting previous config..."
 # 	rm /storage/.cache/connman/*/ -rf
@@ -54,7 +56,7 @@ echo "Name=$SSID" >> $SETTINGS_FILE
 echo "SSID=$SHORT_SSID" >> $SETTINGS_FILE
 echo "Favorite=true" >> $SETTINGS_FILE
 echo "AutoConnect=true" >> $SETTINGS_FILE
-echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE IPv4.method=dhcp
+echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE
 echo "IPv4.method=dhcp" >> $SETTINGS_FILE
 echo "IPv6.method=off" >> $SETTINGS_FILE
 echo "IPv6.privacy=disabled" >> $SETTINGS_FILE
