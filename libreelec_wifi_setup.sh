@@ -27,7 +27,13 @@ echo "Checking if wifi is already connected"
 connmanctl agent on
 
 if [ -n "$HAS_WIFI_ALREADY" ]; then
-	echo "Already connected to Wifi. Deleting previous config..."
+	echo "Already connected to Wifi"
+	IS_CONNECTED_INTENTIONAL=`echo "$HAS_WIFI_ALREADY" | grep $SSID`
+	if [ -n "$IS_CONNECTED_INTENTIONAL" ]; then
+		echo "SSID is correct... exiting script"
+		exit 1
+	fi
+	echo "Incorrect SSID. Deleting previous config..."
 	rm /storage/.cache/connman/*/ -rf
 	exit 1
 fi
