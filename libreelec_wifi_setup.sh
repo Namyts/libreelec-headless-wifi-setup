@@ -17,6 +17,7 @@ connmanctl scan wifi
 echo "Results:"
 SERVICES=`connmanctl services`
 echo "$SERVICES"
+echo "Reults concluded."
 
 HAS_WIFI_ALREADY=`echo "$SERVICES" | grep \*AO`
 echo "$HAS_WIFI_ALREADY"
