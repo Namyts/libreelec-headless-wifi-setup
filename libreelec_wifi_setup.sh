@@ -49,8 +49,12 @@ SETTINGS_FILE=/storage/.cache/connman/$REAL_SSID/settings
 echo "$SETTINGS_FILE"
 
 echo "[$REAL_SSID]" >> $SETTINGS_FILE
+echo "Type=wifi" >> $SETTINGS_FILE
 echo "Name=$SSID" >> $SETTINGS_FILE
 echo "SSID=$SHORT_SSID" >> $SETTINGS_FILE
 echo "Favorite=true" >> $SETTINGS_FILE
 echo "AutoConnect=true" >> $SETTINGS_FILE
-echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE
+echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE IPv4.method=dhcp
+echo "IPv4.method=dhcp" >> $SETTINGS_FILE
+echo "IPv6.method=off" >> $SETTINGS_FILE
+echo "IPv6.privacy=disabled" >> $SETTINGS_FILE
