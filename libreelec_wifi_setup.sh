@@ -56,3 +56,5 @@ echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE
 echo "IPv4.method=dhcp" >> $SETTINGS_FILE
 echo "IPv6.method=off" >> $SETTINGS_FILE
 echo "IPv6.privacy=disabled" >> $SETTINGS_FILE
+
+exit 0
