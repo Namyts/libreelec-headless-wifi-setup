@@ -22,8 +22,9 @@ echo "Reults concluded."
 HAS_WIFI_ALREADY=`echo "$SERVICES" | grep \*AO`
 echo "$HAS_WIFI_ALREADY"
 
-if [ -z "$HAS_WIFI_ALREADY" ]
-then
+echo "Checking if wifi is already connected"
+
+if [ -n "$HAS_WIFI_ALREADY" ]; then
 	echo "Already connected to Wifi. Deleting previous config..."
 	rm /storage/.cache/connman/*/ -rf
 	exit 1
