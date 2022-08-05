@@ -19,31 +19,27 @@ SERVICES=`connmanctl services`
 echo "$SERVICES"
 echo "Reults concluded."
 
-HAS_WIFI_ALREADY=`echo "$SERVICES" | grep \*AO`
+HAS_WIFI_ALREADY=`echo "$SERVICES" | grep \*A`
 echo "$HAS_WIFI_ALREADY"
 
 echo "Checking if wifi is already connected"
 
 connmanctl agent on
 
-# if [ -n "$HAS_WIFI_ALREADY" ]; then
-# 	echo "Already connected to Wifi. Deleting previous config..."
-# 	rm /storage/.cache/connman/*/ -rf
-# 	exit 1
-# else
-	echo "Connecting to new wifi..."
-	CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
-	REAL_SSID=`echo "$CONNECTION" | awk '{print $2}'`
-	SHORT_SSID=`echo "$REAL_SSID" | cut -d '_' -f3`
+if [ -n "$HAS_WIFI_ALREADY" ]; then
+	echo "Already connected to Wifi. Deleting previous config..."
+	rm /storage/.cache/connman/*/ -rf
+	exit 1
+fi
 
-	echo "$CONNECTION"
-	echo "$REAL_SSID"
-	echo "$SHORT_SSID"
+echo "Connecting to new wifi..."
+CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
+REAL_SSID=`echo "$CONNECTION" | awk '{print $2}'`
+SHORT_SSID=`echo "$REAL_SSID" | cut -d '_' -f3`
 
-# 	connmanctl connect $REAL_SSID <<!
-# $PASSWORD
-# !
-# fi
+echo "$CONNECTION"
+echo "$REAL_SSID"
+echo "$SHORT_SSID"
 
 mkdir -p /storage/.cache/connman/$REAL_SSID
 SETTINGS_FILE=/storage/.cache/connman/$REAL_SSID/settings
