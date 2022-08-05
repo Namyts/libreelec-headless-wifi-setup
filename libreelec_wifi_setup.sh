@@ -24,11 +24,11 @@ echo "$HAS_WIFI_ALREADY"
 
 echo "Checking if wifi is already connected"
 
-if [ -n "$HAS_WIFI_ALREADY" ]; then
-	echo "Already connected to Wifi. Deleting previous config..."
-	rm /storage/.cache/connman/*/ -rf
-	exit 1
-else
+# if [ -n "$HAS_WIFI_ALREADY" ]; then
+# 	echo "Already connected to Wifi. Deleting previous config..."
+# 	rm /storage/.cache/connman/*/ -rf
+# 	exit 1
+# else
 	echo "Connecting to new wifi..."
 	CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
 	REAL_SSID=`echo $CONNECTION | | awk '{print $2}'`
@@ -39,4 +39,4 @@ else
 	connmanctl connect $REAL_SSID <<!
 $PASSWORD
 !
-fi
+# fi
