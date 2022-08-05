@@ -19,6 +19,7 @@ SERVICES=`connmanctl services`
 echo "$SERVICES"
 
 HAS_WIFI_ALREADY=`echo "$SERVICES" | grep \*AO`
+echo "$HAS_WIFI_ALREADY"
 
 if [ -z "$HAS_WIFI_ALREADY" ]
 then
@@ -26,6 +27,7 @@ then
 	rm /storage/.cache/connman/*/ -rf
 	exit 1
 else
+	echo "Connecting to new wifi..."
 	CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
 	REAL_SSID=`echo $CONNECTION | | awk '{print $2}'`
 
