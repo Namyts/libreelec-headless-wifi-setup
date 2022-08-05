@@ -32,11 +32,25 @@ echo "Checking if wifi is already connected"
 	echo "Connecting to new wifi..."
 	CONNECTION=`echo "$SERVICES" | grep $SSID | head -n 1`
 	REAL_SSID=`echo "$CONNECTION" | awk '{print $2}'`
+	SHORT_SSID=`echo "$REAL_SSID" | cut -d '_' -f3`
 
 	echo "$CONNECTION"
 	echo "$REAL_SSID"
+	echo "$SHORT_SSID"
 
-	connmanctl connect $REAL_SSID <<!
-$PASSWORD
-!
+# 	connmanctl connect $REAL_SSID <<!
+# $PASSWORD
+# !
 # fi
+
+mkdir -p /storage/.cache/connman/$REAL_SSID
+SETTINGS_FILE=/storage/.cache/connman/$REAL_SSID/settings
+
+echo "$SETTINGS_FILE"
+
+echo "[$REAL_SSID]" >> $SETTINGS_FILE
+echo "Name=$SSID" >> $SETTINGS_FILE
+echo "SSID=$SHORT_SSID" >> $SETTINGS_FILE
+echo "Favorite=true" >> $SETTINGS_FILE
+echo "AutoConnect=true" >> $SETTINGS_FILE
+echo "Passphrase=$PASSWORD" >> $SETTINGS_FILE
